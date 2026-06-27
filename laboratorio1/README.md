@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # TiendaApp — Resumen Clases 1 a 4
 
 App Spring Boot completa de **inventario de productos** que integra todo lo visto en las primeras 4 clases del curso SC-403.
@@ -155,7 +154,3 @@ Ver el laboratorio paso a paso para el detalle del flujo.
 | Página `/productos` vacía | Ejecutar `seed-data.sql` en Workbench. |
 | Cambios en HTML no se ven | `spring.thymeleaf.cache=false` ya está activo. Refrescar el navegador. |
 | Puerto 8080 en uso | Cambiar `server.port=8081` o matar el proceso anterior. |
-=======
-# Santiago_Ramirez_Madrigal
-repositorio de universidad 
->>>>>>> 3af9bb40c7de59d96d3e01498f62a9741226a4a3
