@@ -20,11 +20,13 @@ el @NotNull para la fecha porque el notblack aplica solo para strings ademas de 
 agregue el @size(max) para limitar y reforzar el lenght que ya habia en las lineas de nombre, descripcion, lugar, categoria, organizador
 
 el @positive significa mayor que cero estrictamente, y la idea del enunciado dice "cupo máximo > 0" — un evento con cupo 0 no tendría sentido, eso mismo se usa para CupoMaximo porque se necesita escribir una cantidad de cupos o se venderian infinitos o ninguno y tambien @PositiveOrZero que significa "cero o mayor" permite el 0 al igual que Precio y para cuposVendidos tiene sentido porque un evento que se fue creado y que todavía no vendió ninguna entrada
+
 ---
 
 3. Modal de confirmación de borrado
 
 por ejemplo con eliminar si se tiene 10 eventos se tendrian que hacer un modal para cada uno, puse una linea de codigo data-bs-toggle="modal" y ese modal ya lo incorpora al Html a todas las cards, a diferencia de los atributos data-bs-* que ya vienen de Bootstrap, data-id y data-nombre son atributos de html ya html con el id y con data-nombre se conecta con el modalEliminar y asi se integran en todas las cards, con el boton.getAttribute de data-id y data nombre se toma los dos valores del voton y los usa para rellenar el modal, ya luego que los lee el resultado final muestra el nombre correcto y el formulario de "eliminar" dentro del modal apuntta al endpoint de eliminar y el show.bs.modal es el que da la orden al modal para que se haga visible en la pantalla, el event.relatedtarget es la parte que dice que el elemento que causó el evento fue el boton "eliminar" y por eso el modal sabe de cual card vino la orden 
+
 ---
 
 4. Decisiones técnicas propias
