@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: head('Usuarios')}"></head>
+<body>
+<div th:replace="~{fragments/header :: nav}"></div>
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Usuarios lectores</h1>
+        <a th:href="@{/usuarios/nuevo}" class="btn btn-primary">Nuevo lector</a>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Username</th>
+            <th>Nombre completo</th>
+            <th>Email</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="usuario : ${usuarios}">
+            <td th:text="${usuario.username}">username</td>
+            <td th:text="${usuario.nombreCompleto}">nombre</td>
+            <td th:text="${usuario.email}">email</td>
+            <td>
+                <a th:href="@{'/usuarios/' + ${usuario.id} + '/editar'}" class="btn btn-outline-secondary btn-sm">Editar</a>
+                <form th:action="@{'/usuarios/' + ${usuario.id} + '/eliminar'}" method="post" class="d-inline"
+                      onsubmit="return confirm('Seguro que queres eliminar este usuario?');">
+                    <button type="submit" class="btn btn-outline-danger btn-sm">Eliminar</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

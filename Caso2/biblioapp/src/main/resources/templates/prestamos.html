@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments/header :: head('Prestamos')}"></head>
+<body>
+<div th:replace="~{fragments/header :: nav}"></div>
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 th:text="${esBibliotecario} ? 'Todos los prestamos' : 'Mis prestamos'">Prestamos</h1>
+        <a th:href="@{/prestamos/nuevo}" class="btn btn-primary" sec:authorize="hasRole('BIBLIOTECARIO')">
+            Registrar prestamo
+        </a>
+    </div>
+
+    <div th:if="${#lists.isEmpty(prestamos)}" class="alert alert-info">
+        No hay prestamos para mostrar.
+    </div>
+
+    <table class="table table-striped" th:if="${!#lists.isEmpty(prestamos)}">
+        <thead>
+        <tr>
+            <th>Libro</th>
+            <th th:if="${esBibliotecario}">Usuario</th>
+            <th>Fecha prestamo</th>
+            <th>Fecha limite</th>
+            <th>Fecha devolucion</th>
+            <th>Estado</th>
+            <th sec:authorize="hasRole('BIBLIOTECARIO')"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="prestamo : ${prestamos}"
+            th:classappend="${prestamo.fechaDevolucion == null and prestamo.fechaLimite.isBefore(#temporals.createToday())} ? 'table-danger' : ''">
+            <td th:text="${prestamo.libro.titulo}">Libro</td>
+            <td th:if="${esBibliotecario}" th:text="${prestamo.usuario.nombreCompleto}">Usuario</td>
+            <td th:text="${prestamo.fechaPrestamo}">Fecha</td>
+            <td th:text="${prestamo.fechaLimite}">Fecha</td>
+            <td th:text="${prestamo.fechaDevolucion} ?: 'Pendiente'">Fecha</td>
+            <td>
+                <span th:if="${prestamo.fechaDevolucion != null}" class="badge bg-success">Devuelto</span>
+                <span th:if="${prestamo.fechaDevolucion == null}" class="badge bg-warning text-dark">En curso</span>
+            </td>
+            <td sec:authorize="hasRole('BIBLIOTECARIO')">
+                <form th:if="${prestamo.fechaDevolucion == null}"
+                      th:action="@{'/prestamos/' + ${prestamo.id} + '/devolver'}" method="post">
+                    <button type="submit" class="btn btn-outline-success btn-sm">Marcar devuelto</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

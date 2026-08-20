@@ -16,11 +16,8 @@ public class HomeController {
         return "login";
     }
 
-    // ==========================================================
-    // CASO PRACTICO 2 - REQUISITO 3:
-    // Falta la ruta GET /403 con la vista de acceso denegado.
-    // Crea el metodo, la vista templates/403.html, y configurala
-    // en SecurityConfig con .exceptionHandling(ex -> ex
-    //     .accessDeniedPage("/403"))
-    // ==========================================================
+        @GetMapping("/403")
+    public String accesoDenegado() {
+        return "403";
+    }
 }

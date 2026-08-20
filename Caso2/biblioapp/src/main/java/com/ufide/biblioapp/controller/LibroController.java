@@ -1,6 +1,5 @@
 package com.ufide.biblioapp.controller;
 
-import com.ufide.biblioapp.entity.Libro;
 import com.ufide.biblioapp.service.LibroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,11 +25,4 @@ public class LibroController {
         return "libro-detalle";
     }
 
-    // ==========================================================
-    // CASO PRACTICO 2 - REQUISITO 2:
-    // Aca vas a agregar las rutas de PrestamoController (o un
-    // controller nuevo PrestamoController.java) para registrar
-    // prestamos y devoluciones, protegidas con @PreAuthorize
-    // segun el Requisito 3.
-    // ==========================================================
 }

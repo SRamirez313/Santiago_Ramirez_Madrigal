@@ -8,7 +8,7 @@ INSERT INTO usuarios (username, password, nombre_completo, email, rol) VALUES
 ('lector2', '$2a$10$DZ3Bg2gYRl0eB2P1c8x0Fu1z1Y2E1P1O3G9k4c1Rj1XxvA9YV9O0e', 'Maria Lectora', 'maria.lectora@example.com', 'LECTOR');
 
 INSERT INTO libros (titulo, autor, isbn, categoria, copias_totales, copias_disponibles) VALUES
-('Cien anios de soledad', 'Gabriel Garcia Marquez', '978-0307350438', 'Ficcion', 3, 3),
+('Cien años de soledad', 'Gabriel Garcia Marquez', '978-0307350438', 'Ficcion', 3, 3),
 ('Clean Code', 'Robert C. Martin', '978-0132350884', 'Tecnico', 5, 5),
 ('El principito', 'Antoine de Saint-Exupery', '978-0156012195', 'Infantil', 4, 4),
 ('Effective Java', 'Joshua Bloch', '978-0134685991', 'Tecnico', 3, 3),

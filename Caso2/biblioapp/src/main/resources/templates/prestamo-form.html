@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: head('Registrar prestamo')}"></head>
+<body>
+<div th:replace="~{fragments/header :: nav}"></div>
+<div class="container">
+    <h1 class="mb-4">Registrar prestamo</h1>
+
+    <form th:action="@{/prestamos}" method="post" class="card card-body">
+        <div class="mb-3">
+            <label class="form-label">Libro</label>
+            <select name="libroId" class="form-select" required>
+                <option value="">-- Seleccionar libro --</option>
+                <option th:each="libro : ${libros}"
+                        th:value="${libro.id}"
+                        th:text="${libro.titulo} + ' (' + ${libro.copiasDisponibles} + ' disponibles)'"
+                        th:disabled="${libro.copiasDisponibles == 0}">
+                </option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Lector</label>
+            <select name="usuarioId" class="form-select" required>
+                <option value="">-- Seleccionar lector --</option>
+                <option th:each="usuario : ${usuarios}"
+                        th:value="${usuario.id}"
+                        th:text="${usuario.nombreCompleto}">
+                </option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Registrar</button>
+        <a th:href="@{/prestamos}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: head('Usuario')}"></head>
+<body>
+<div th:replace="~{fragments/header :: nav}"></div>
+<div class="container">
+    <h1 class="mb-4" th:text="${usuario.id == null} ? 'Nuevo lector' : 'Editar lector'">Usuario</h1>
+
+    <form th:action="@{/usuarios}" th:object="${usuario}" method="post" class="card card-body">
+        <input type="hidden" th:field="*{id}">
+        <input type="hidden" th:field="*{rol}">
+
+        <div class="mb-3">
+            <label class="form-label">Username</label>
+            <input type="text" th:field="*{username}" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">
+                Contrasena
+                <span th:if="${usuario.id != null}" class="text-muted">(dejar en blanco para mantener la actual)</span>
+            </label>
+            <input type="password" th:field="*{password}" class="form-control" th:required="${usuario.id == null}">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Nombre completo</label>
+            <input type="text" th:field="*{nombreCompleto}" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="email" th:field="*{email}" class="form-control">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <a th:href="@{/usuarios}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+</body>
+</html>

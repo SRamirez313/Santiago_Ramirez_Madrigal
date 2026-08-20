@@ -2,6 +2,7 @@ package com.ufide.biblioapp.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Table(name = "usuarios")
@@ -16,6 +17,7 @@ public class Usuario {
     private String username;
 
     @NotBlank
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
     @NotBlank
@@ -23,15 +25,7 @@ public class Usuario {
 
     private String email;
 
-    // ==========================================================
-    // CASO PRACTICO 2 - REQUISITO 3:
-    // Este campo hoy es un String libre ("BIBLIOTECARIO" / "LECTOR").
-    // Tu trabajo es crear un enum Rol con esas dos constantes y
-    // validar este campo contra el enum (sin cambiar el tipo de
-    // columna es suficiente - lo importante es que tu codigo Java
-    // ya no escriba el string "a mano" en ningun lado, sino que
-    // use Rol.BIBLIOTECARIO.name() / Rol.LECTOR.name()).
-    // ==========================================================
+
     @NotBlank
     private String rol;
 
