@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: head('Acceso denegado')}"></head>
+<body>
+<div th:replace="~{fragments/header :: nav}"></div>
+<div class="container">
+    <div class="alert alert-danger text-center">
+        <h2>403 - Acceso denegado</h2>
+        <p>No tenes permiso para realizar esta accion.</p>
+        <a href="/libros" class="btn btn-outline-danger">Volver al catalogo</a>
+    </div>
+</div>
+</body>
+</html>
